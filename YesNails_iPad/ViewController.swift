@@ -36,6 +36,7 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        appDelegate.selectedServices.removeAll() // Prevents duplicate when going back to fix contact info
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -102,10 +103,10 @@ class ViewController: UITableViewController {
             appDelegate.selectedServices.append(selectedServiceName)
         }
         
-        print ("Current Services")
-        for service in appDelegate.selectedServices {
-            print (service)
-        }
+//        print ("Current Services")
+//        for service in appDelegate.selectedServices {
+//            print (service)
+//        }
     }
     
 }

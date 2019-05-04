@@ -12,12 +12,17 @@ import Firebase
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    // Global variables
     var window: UIWindow?
     var selectedServices = [String]()
+    var customerID = 0
+    var docRef: CollectionReference?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        // TODO: Thinking about either retaining data, or delete each time the app restarts.
+        docRef = Firestore.firestore().collection("Customers")
         return true
     }
 

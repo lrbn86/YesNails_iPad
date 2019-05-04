@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4C6B9646A90A4CE2BFE5F2F5 /* Pods_YesNails_iPad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E24D329FFAB465C88FCE36 /* Pods_YesNails_iPad.framework */; };
+		941060B5227D2C3D00C6D6A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941060B4227D2C3D00C6D6A9 /* Main.storyboard */; };
 		942E850A2276222B0094379B /* CheckInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942E85092276222B0094379B /* CheckInController.swift */; };
 		942E850C22762A120094379B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 942E850B22762A120094379B /* GoogleService-Info.plist */; };
 		946143E522752277001DE9EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946143E422752277001DE9EF /* AppDelegate.swift */; };
@@ -16,11 +17,11 @@
 		946143F822752479001DE9EF /* YesNailsLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 946143F722752479001DE9EF /* YesNailsLogo.png */; };
 		946143FD22752DF2001DE9EF /* Painted Paradise - Demo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 946143FC22752DF2001DE9EF /* Painted Paradise - Demo.ttf */; };
 		9466A533227548F000C7E0F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9466A532227548F000C7E0F0 /* ViewController.swift */; };
-		9492B6712275FAC9006186DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9492B6702275FAC9006186DE /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		72E24D329FFAB465C88FCE36 /* Pods_YesNails_iPad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YesNails_iPad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		941060B4227D2C3D00C6D6A9 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		942E85092276222B0094379B /* CheckInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInController.swift; sourceTree = "<group>"; };
 		942E850B22762A120094379B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		946143E122752277001DE9EF /* YesNails_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YesNails_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,7 +32,6 @@
 		946143F722752479001DE9EF /* YesNailsLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = YesNailsLogo.png; path = ../../../YesNailsLogo.png; sourceTree = "<group>"; };
 		946143FC22752DF2001DE9EF /* Painted Paradise - Demo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Painted Paradise - Demo.ttf"; path = "../../../Painted Paradise - Demo.ttf"; sourceTree = "<group>"; };
 		9466A532227548F000C7E0F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9492B6702275FAC9006186DE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../Main.storyboard; sourceTree = "<group>"; };
 		9CDB42E969792BE6820174D8 /* Pods-YesNails_iPad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YesNails_iPad.debug.xcconfig"; path = "Target Support Files/Pods-YesNails_iPad/Pods-YesNails_iPad.debug.xcconfig"; sourceTree = "<group>"; };
 		CF2D52016CF68FC3BE362D8A /* Pods-YesNails_iPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YesNails_iPad.release.xcconfig"; path = "Target Support Files/Pods-YesNails_iPad/Pods-YesNails_iPad.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,7 +62,6 @@
 				9CDB42E969792BE6820174D8 /* Pods-YesNails_iPad.debug.xcconfig */,
 				CF2D52016CF68FC3BE362D8A /* Pods-YesNails_iPad.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -90,13 +89,13 @@
 				946143FB22752DB4001DE9EF /* App Font */,
 				946143F622752460001DE9EF /* App Icon */,
 				946143E422752277001DE9EF /* AppDelegate.swift */,
-				9492B6702275FAC9006186DE /* Main.storyboard */,
+				942E85092276222B0094379B /* CheckInController.swift */,
 				9466A532227548F000C7E0F0 /* ViewController.swift */,
 				946143EB22752280001DE9EF /* Assets.xcassets */,
+				941060B4227D2C3D00C6D6A9 /* Main.storyboard */,
 				946143ED22752280001DE9EF /* LaunchScreen.storyboard */,
 				946143F022752280001DE9EF /* Info.plist */,
 				942E850B22762A120094379B /* GoogleService-Info.plist */,
-				942E85092276222B0094379B /* CheckInController.swift */,
 			);
 			path = YesNails_iPad;
 			sourceTree = "<group>";
@@ -178,9 +177,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				946143F822752479001DE9EF /* YesNailsLogo.png in Resources */,
-				9492B6712275FAC9006186DE /* Main.storyboard in Resources */,
 				946143EF22752280001DE9EF /* LaunchScreen.storyboard in Resources */,
 				946143EC22752280001DE9EF /* Assets.xcassets in Resources */,
+				941060B5227D2C3D00C6D6A9 /* Main.storyboard in Resources */,
 				946143FD22752DF2001DE9EF /* Painted Paradise - Demo.ttf in Resources */,
 				942E850C22762A120094379B /* GoogleService-Info.plist in Resources */,
 			);
