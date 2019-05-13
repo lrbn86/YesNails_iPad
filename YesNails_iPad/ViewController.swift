@@ -10,6 +10,10 @@ import UIKit
 import AudioToolbox
 
 class ViewController: UITableViewController {
+   
+    
+    @IBOutlet weak var completeButton: UIBarButtonItem!
+    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let cellId = "cellId"
     
@@ -38,6 +42,10 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         appDelegate.selectedServices.removeAll() // Prevents duplicate when going back to fix contact info
+        
+        let font = UIFont.systemFont(ofSize: 40)
+        completeButton?.setTitleTextAttributes([NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): font],
+                                              for: .normal)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

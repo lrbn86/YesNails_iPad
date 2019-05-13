@@ -18,6 +18,8 @@
         <!--Services-->
         <scene sceneID="IbX-ZT-ieK">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0AH-i5-42G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="14V-UI-SF1" userLabel="Exit" sceneMemberID="exit"/>
                 <tableViewController id="vYp-fb-mDD" customClass="ViewController" customModule="YesNails_iPad" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jjk-nA-pAI">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
@@ -38,7 +40,7 @@
                             <outlet property="delegate" destination="vYp-fb-mDD" id="IFO-Ql-ZBC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Services" id="3Xk-SF-RgL">
+                    <navigationItem key="navigationItem" title="Services" prompt="After selecting services, tap on the 'Complete' button on the right." largeTitleDisplayMode="always" id="3Xk-SF-RgL">
                         <barButtonItem key="rightBarButtonItem" title="Complete" id="k3p-fG-Eed">
                             <connections>
                                 <action selector="popUpConfirm:" destination="vYp-fb-mDD" id="s8F-Ae-p5D"/>
@@ -49,10 +51,37 @@
                         <segue destination="14V-UI-SF1" kind="unwind" identifier="unwindRoot" unwindAction="unwindToRootWithSegue:" id="4cN-Ri-NQ5"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0AH-i5-42G" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="14V-UI-SF1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="696" y="36"/>
+            <point key="canvasLocation" x="719" y="36"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="pqk-vT-iGF">
+            <objects>
+                <viewController id="DTd-Oa-Wva" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sPS-Fb-qID">
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Services" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oG1-Da-78g">
+                                <rect key="frame" x="-6" y="70" width="846" height="224"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="PaintedParadise" family="Painted Paradise" pointSize="130"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ebu-Lm-Roc">
+                                <rect key="frame" x="233" y="512" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="B9s-Ko-HwE"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9bJ-7K-2Y3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="188" y="801"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Bdn-tv-kad">
@@ -115,7 +144,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vYp-fb-mDD" kind="show" id="uwx-Rq-zg0"/>
+                                    <segue destination="vYp-fb-mDD" kind="show" id="dWm-fg-mki"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please enter your contact information." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqk-Is-UaI">
