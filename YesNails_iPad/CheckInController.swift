@@ -21,8 +21,8 @@ class CheckInController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        Navi.rightBarButtonItem?.isEnabled = false
         selectButton.isEnabled = false
+        selectButton.backgroundColor = UIColor.gray
         [nameField, phoneField].forEach({ $0.addTarget(self, action: #selector(editingChanged), for: .editingChanged) })
     }
     
@@ -41,13 +41,13 @@ class CheckInController: UIViewController {
             let nameText = nameField.text
             let phoneText = phoneField.text
             if (nameText?.isEmpty == false && phoneText?.isEmpty == false) {
-//                self.Navi.rightBarButtonItem?.isEnabled = true
                 selectButton.isEnabled = true
+                selectButton.backgroundColor = UIColor.green
                 return
             }
         }
-//        Navi.rightBarButtonItem?.isEnabled = false
         selectButton.isEnabled = false
+        selectButton.backgroundColor = UIColor.gray
     }
     
     // When user taps outside of keyboard, the keyboard will disappear.
@@ -55,13 +55,11 @@ class CheckInController: UIViewController {
         self.view.endEditing(true)
     }
     
-    // TODO: Find a way to sort better in the firestore database, sort by documentID
-    // TODO: The app will overwrite the data if its restarted. It will get buggy. The only fix is to delete everything in firestore before starting the app.
     @IBAction func unwindToRoot(segue: UIStoryboardSegue) {
         AudioServicesPlayAlertSound(1002)
-        
-//        Navi.rightBarButtonItem?.isEnabled = false
+
         selectButton.isEnabled = false
+        selectButton.backgroundColor = UIColor.gray
         // Send info to database before clearing
         guard let nameText = nameField.text, !nameText.isEmpty else { return }
         guard let phoneText = phoneField.text, !phoneText.isEmpty else { return }
@@ -76,6 +74,7 @@ class CheckInController: UIViewController {
         let now = df.string(from: Date())
         
         let dataToSave: [String: Any] = ["dateEntered": now, "Name" : nameText, "Phone" : phoneText, "Services":appDelegate.selectedServices]
+        
         // Used timestamp date to order by first-come-first-serve basis
         appDelegate.docRef?.document(now).setData(dataToSave)
         
@@ -86,4 +85,5 @@ class CheckInController: UIViewController {
         
         
     }
+    
 }
