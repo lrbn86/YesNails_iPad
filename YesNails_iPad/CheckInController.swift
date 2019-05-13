@@ -9,19 +9,20 @@
 import UIKit
 import Firebase
 import AVFoundation
+import AudioToolbox
 
 class CheckInController: UIViewController {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    @IBOutlet weak var Navi: UINavigationItem!
+    @IBOutlet weak var selectButton: UIButton!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var phoneField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Navi.rightBarButtonItem?.isEnabled = false
-        
+//        Navi.rightBarButtonItem?.isEnabled = false
+        selectButton.isEnabled = false
         [nameField, phoneField].forEach({ $0.addTarget(self, action: #selector(editingChanged), for: .editingChanged) })
     }
     
@@ -40,11 +41,13 @@ class CheckInController: UIViewController {
             let nameText = nameField.text
             let phoneText = phoneField.text
             if (nameText?.isEmpty == false && phoneText?.isEmpty == false) {
-                self.Navi.rightBarButtonItem?.isEnabled = true
+//                self.Navi.rightBarButtonItem?.isEnabled = true
+                selectButton.isEnabled = true
                 return
             }
         }
-        Navi.rightBarButtonItem?.isEnabled = false
+//        Navi.rightBarButtonItem?.isEnabled = false
+        selectButton.isEnabled = false
     }
     
     // When user taps outside of keyboard, the keyboard will disappear.
@@ -55,36 +58,32 @@ class CheckInController: UIViewController {
     // TODO: Find a way to sort better in the firestore database, sort by documentID
     // TODO: The app will overwrite the data if its restarted. It will get buggy. The only fix is to delete everything in firestore before starting the app.
     @IBAction func unwindToRoot(segue: UIStoryboardSegue) {
+        AudioServicesPlayAlertSound(1002)
         
-//        let alert = UIAlertController(title: "My Alert", message: "This is an alert.", preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-//            NSLog("The \"OK\" alert occured.")
-//        }))
-        
-        Navi.rightBarButtonItem?.isEnabled = false
-        
+//        Navi.rightBarButtonItem?.isEnabled = false
+        selectButton.isEnabled = false
         // Send info to database before clearing
         guard let nameText = nameField.text, !nameText.isEmpty else { return }
         guard let phoneText = phoneField.text, !phoneText.isEmpty else { return }
-        appDelegate.customerID += 1;
-        // TODO: Add a field to the data passed such as "Ready"
-        // So the iPad will alert when iPhone modifies the "ready" field
-        // Repeatedly check for "ready" status
-        let dataToSave: [String: Any] = ["ID": appDelegate.customerID, "Name" : nameText, "Phone" : phoneText, "Services":appDelegate.selectedServices]
-        // Customized documentID so that it follows the first-come-first-serve ordering
-        appDelegate.docRef?.document(String(appDelegate.customerID)).setData(dataToSave)
-        let utterance = AVSpeechUtterance(string: "Thank you for choosing us, \(nameText).")
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        utterance.rate = 0.5
-        let synthesizer = AVSpeechSynthesizer()
-        synthesizer.speak(utterance)
         
+    
+        let df = DateFormatter()
+        df.locale = Locale(identifier: "en_US_POSIX")
+        df.dateFormat = "h:mm a 'on' MMMM dd, yyyy"
+        df.amSymbol = "AM"
+        df.pmSymbol = "PM"
+        
+        let now = df.string(from: Date())
+        
+        let dataToSave: [String: Any] = ["dateEntered": now, "Name" : nameText, "Phone" : phoneText, "Services":appDelegate.selectedServices]
+        // Used timestamp date to order by first-come-first-serve basis
+        appDelegate.docRef?.document(now).setData(dataToSave)
         
         // Clear
         nameField.text = ""
         phoneField.text = ""
         appDelegate.selectedServices.removeAll()
-//        self.present(alert, animated: true, completion: nil)
+        
+        
     }
-    
 }

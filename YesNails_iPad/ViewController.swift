@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class ViewController: UITableViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -44,11 +45,12 @@ class ViewController: UITableViewController {
     }
     
     
+    // Header styles
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
         label.text = services[section]
         label.textColor = UIColor.white
-        label.font = label.font.withSize(30)
+        label.font = label.font.withSize(16)
         label.backgroundColor = UIColor.red
         return label
     }
@@ -70,6 +72,7 @@ class ViewController: UITableViewController {
         return rows
     }
     
+    // Cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         var serviceName = ""
@@ -88,19 +91,39 @@ class ViewController: UITableViewController {
         }
         
         cell.textLabel?.text = serviceName
+        cell.textLabel?.font = cell.textLabel?.font.withSize(15)
         return cell
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    
+    
+    
+    @IBAction func popUpConfirm(_ sender: Any) {
+        let alert = UIAlertController(title: "Confirmation", message: "Confirm selected services?", preferredStyle: .alert)
+alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Default action"), style: .default, handler: { _ in self.performSegue(withIdentifier: "unwindRoot", sender: nil)
+                }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+        }))
+                self.present(alert, animated: true, completion: nil)
         
+        
+        
+    }
+    
+    // Do this when a row is selected
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedServiceName = (tableView.cellForRow(at: indexPath)?.textLabel?.text)!
         if (tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCell.AccessoryType.checkmark) {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
 //            print ("Deselected \(tableView.cellForRow(at: indexPath)?.textLabel?.text)")
             appDelegate.selectedServices.removeAll {$0 == selectedServiceName}
+            AudioServicesPlayAlertSound(1105)
         } else{
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
 //            print ("Selected \(tableView.cellForRow(at: indexPath)?.textLabel?.text)")
             appDelegate.selectedServices.append(selectedServiceName)
+            AudioServicesPlayAlertSound(1104)
         }
         
 //        print ("Current Services")
